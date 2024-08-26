@@ -6,35 +6,11 @@
 body{
     background-color:  #f5f5f7;
     color:black;
+    height:2000px;
     max-width: 1440px;
     margin: 0 auto;
-    padding: 0 20px; 
+    padding: 70px 20px 0px; 
     
-}
-
-@media (max-width: 768px) {
-   
-    nav {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    nav a {
-        margin-left: 0;
-        margin-bottom: 10px;
-    }
-}
-
-@media (max-width: 576px) {
-    
-    h1 {
-        font-size: 24px;
-    }
-
-    .btn {
-        font-size: 16px;
-        padding: 10px 20px;
-    }
 }
 
 nav {
@@ -42,24 +18,120 @@ nav {
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
+    background-color: rgba(227, 223, 223, 0.287);
+    backdrop-filter: blur(10px);
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 40px);
+    max-width: 1440px;
+    z-index: 1000;
+    height: 70px; 
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+nav:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
 }
 
 nav img {
-    width:100px;
-    height: 100px;
+    width: 50px;
+    height: 50px;
+    transition: transform 0.3s ease;
+}
+
+nav img:hover {
+    transform: rotate(360deg);
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 20px;
 }
 
 nav a {
     text-decoration: none;
     color: #333;
-    margin-left: 20px;
     font-size: 18px;
+    font-weight: 600;
+    position: relative;
     transition: color 0.3s ease;
 }
 
 nav a:hover {
     color: #0071e3;
 }
+
+nav a::after {
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    background-color: #0071e3;
+    left: 0;
+    bottom: -5px;
+    transition: width 0.3s ease;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+@media (max-width: 768px) {
+    nav {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 20px;
+        height: 70px;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        text-align: left;
+        gap: 10px;
+        margin-top: 10px;
+    }
+
+    .nav-links.active {
+        display: flex;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background-color: rgba(255, 255, 255, 0.9);
+        padding: 10px 20px;
+        box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
+        border-radius: 0 0 8px 8px;
+    }
+
+    .menu-toggle {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        font-size: 24px;
+        color: #333;
+        margin-left: auto;
+        padding: 10px;
+    }
+}
+
+.menu-toggle {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: flex;
+    }
+}
+
 
 #sayhi-content{
     margin: 50px 60px 100px;
@@ -68,12 +140,14 @@ nav a:hover {
 
 
 #sayhi {
+    margin-top: 70px;
     position: relative;
-    /* background-image: url(); */
+    /* background-image: url('/bg.jpg'); */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    animation: brightnessBackground 5s ease-in-out infinite;
+    overflow: hidden;
+
 }
 
 #helloText{
@@ -181,7 +255,6 @@ footer p {
 
 
 
-
 #my-skills {
     padding: 60px 0;
    
@@ -197,7 +270,7 @@ footer p {
 .skills-wrapper {
     display: flex;
     width: calc(200px * 24 + 20px * 23); 
-    animation: scrollLeft 30s linear infinite;
+    animation: scrollLeft 24s linear infinite;
 }
 
 .skill-box {
@@ -207,12 +280,12 @@ footer p {
     align-items: center;
     justify-content: center;
     background-color: #ffffff;
-    border: 1px solid #e0e0e0;
+    border: 2px solid #e0e0e0;
     border-radius: 10px;
     text-decoration: none;
     color: #1d1d1f;
     padding: 40px 20px;
-    box-shadow: 0 5px 8px rgba(60, 238, 33, 0.621);
+    box-shadow: 0 5px 8px rgba(24, 40, 214, 0.494);
     transition: transform 1s ease, box-shadow 0.3s ease;
     margin-right: 20px;
 }
@@ -232,6 +305,7 @@ footer p {
     }
 }
 
+
 #skills-container:hover .skills-wrapper {
     animation-play-state: paused;
 }
@@ -248,24 +322,12 @@ footer p {
     animation: slideUp 2s ease-out;
 }
 
-@keyframes brightnessBackground {
-    0% {
-        filter: brightness(1);
-    }
-    50% {
-        filter: brightness(0.8);
-    }
-    100% {
-        filter: brightness(1);
-    }
-}
-
 .fancy-wipe {
 	margin: 0;
 	font-weight: 300;
 	font-size: 30px;
 	position: relative;
-	--duration: 8s;
+	--duration: 4s;
 	--easing: linear;
 	--colors: linear-gradient(
 		90deg,
