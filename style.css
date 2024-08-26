@@ -185,6 +185,8 @@ footer p {
 }
 
 .skill-box {
+    width: 80;
+    
     display: flex;
     align-items: center;
     justify-content: center;
