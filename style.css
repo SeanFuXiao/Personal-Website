@@ -66,6 +66,16 @@ nav a:hover {
 
 }
 
+
+#sayhi {
+    position: relative;
+    /* background-image: url(); */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    animation: brightnessBackground 5s ease-in-out infinite;
+}
+
 #helloText{
     color: #FFB800;
     font-size: 30px;
@@ -202,13 +212,13 @@ footer p {
     text-decoration: none;
     color: #1d1d1f;
     padding: 40px 20px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 5px 8px rgba(60, 238, 33, 0.621);
+    transition: transform 1s ease, box-shadow 0.3s ease;
     margin-right: 20px;
 }
 
 .skill-box:hover {
-    transform: translateY(-10px);
+    transform: translateY(-5px);
     box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
     animation-play-state: paused;
 }
@@ -236,4 +246,16 @@ footer p {
     opacity: 1;
     transform: translateY(0);
     animation: slideUp 2s ease-out;
+}
+
+@keyframes brightnessBackground {
+    0% {
+        filter: brightness(1);
+    }
+    50% {
+        filter: brightness(0.8);
+    }
+    100% {
+        filter: brightness(1);
+    }
 }
