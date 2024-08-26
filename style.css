@@ -197,7 +197,7 @@ footer p {
 .skills-wrapper {
     display: flex;
     width: calc(200px * 24 + 20px * 23); 
-    animation: scrollLeft 24s linear infinite;
+    animation: scrollLeft 30s linear infinite;
 }
 
 .skill-box {
@@ -258,4 +258,83 @@ footer p {
     100% {
         filter: brightness(1);
     }
+}
+
+.fancy-wipe {
+	margin: 0;
+	font-weight: 300;
+	font-size: 30px;
+	position: relative;
+	--duration: 8s;
+	--easing: linear;
+	--colors: linear-gradient(
+		90deg,
+		#d4a90d,
+		#97b63a,
+		#4b7f7a,
+		#7aa4a4,
+		#8767c7,
+		#c34343,
+		#e06d0e
+	);
+}
+
+.text {
+	display: block;
+	padding: 2rem;
+	background-image: var(--colors);
+	background-size: 200% auto;
+	background-clip: text;
+	-webkit-background-clip: text;
+	color: transparent;
+	animation: colorScroll var(--duration) var(--easing) infinite;
+    
+}
+
+.wipe-in {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	padding: 2rem;
+	background-image: var(--colors);
+    background-clip: text;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	animation: wipe-in var(--duration) infinite var(--easing);
+	mask: linear-gradient(to right, black, black 45%, white 50%, black 52.5%, black);
+  	mask-composite: exclude;
+	mask-mode: luminance;
+	mask-size: 300% 100%;
+	mask-position: 100% 0px;
+}
+
+.blur-in {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	padding: 2rem;
+	background-image: var(--colors);
+    background-clip: text;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	animation: wipe-in var(--duration) infinite var(--easing);
+	mask: linear-gradient(to right, black, black 45%, white 52.5%, black 55%, black);
+  	mask-composite: exclude;
+	mask-mode: luminance;
+	mask-size: 300% 100%;
+	mask-position: 100% 0px;
+	filter: blur(10px);
+}
+
+@keyframes colorScroll {
+	0% {
+		background-position: 200% center;
+	}
+	100% {
+		background-position: 0% center;
+	}
 }
